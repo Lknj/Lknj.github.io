@@ -1,100 +1,88 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="google-site-verification" content="" />
+  <meta name="referrer" content="unsafe-url">
   
-
+  <title>权限系统</title>
+  <meta name="author" content="John Doe">
+  <meta name="description" content="权限模型迄今为止最为普及的权限设计模型是RBAC模型,基于角色的访问控制（Role-Based Access Control)
+RBAC0模型，如下：
+这是权限最基础也是最核心的模型,它包括用户/角色/权限,其中用户和角色是多对多的关系,角色和权限也是多对多的关系。用户是发起操作的主体,按类型分可分">
   
-  <title>权限系统 | 刘康敬的博客</title>
+  
+  <meta property="og:title" content="权限系统"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  
-  
-  <meta name="description" content="权限模型迄今为止最为普及的权限设计模型是RBAC模型,基于角色的访问控制（Role-Based Access Control) RBAC0模型，如下： 这是权限最基础也是最核心的模型,它包括用户&#x2F;角色&#x2F;权限,其中用户和角色是多对多的关系,角色和权限也是多对多的关系。用户是发起操作的主体,按类型分可分为2B和2C用户,可以是后台管理系统的用户,可以是OA系统的内部员工,也可以是面向C端的用户,比如阿">
-<meta name="keywords" content="数据库">
-<meta property="og:type" content="article">
-<meta property="og:title" content="权限系统">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2018&#x2F;10&#x2F;22&#x2F;%E6%9D%83%E9%99%90%E7%B3%BB%E7%BB%9F&#x2F;index.html">
-<meta property="og:site_name" content="刘康敬的博客">
-<meta property="og:description" content="权限模型迄今为止最为普及的权限设计模型是RBAC模型,基于角色的访问控制（Role-Based Access Control) RBAC0模型，如下： 这是权限最基础也是最核心的模型,它包括用户&#x2F;角色&#x2F;权限,其中用户和角色是多对多的关系,角色和权限也是多对多的关系。用户是发起操作的主体,按类型分可分为2B和2C用户,可以是后台管理系统的用户,可以是OA系统的内部员工,也可以是面向C端的用户,比如阿">
-<meta property="og:locale" content="en">
-<meta property="og:image" content="https:&#x2F;&#x2F;user-gold-cdn.xitu.io&#x2F;2019&#x2F;10&#x2F;31&#x2F;16e2255e71b77cf1?w=634&amp;h=180&amp;f=png&amp;s=4829">
-<meta property="og:image" content="https:&#x2F;&#x2F;user-gold-cdn.xitu.io&#x2F;2019&#x2F;10&#x2F;31&#x2F;16e2255e6c99e707?w=483&amp;h=387&amp;f=png&amp;s=14307">
-<meta property="og:image" content="https:&#x2F;&#x2F;user-gold-cdn.xitu.io&#x2F;2019&#x2F;10&#x2F;31&#x2F;16e2255e7788acef?w=783&amp;h=456&amp;f=png&amp;s=13297">
-<meta property="og:image" content="https:&#x2F;&#x2F;user-gold-cdn.xitu.io&#x2F;2019&#x2F;10&#x2F;31&#x2F;16e2255e736a2e46?w=347&amp;h=397&amp;f=png&amp;s=7754">
-<meta property="og:image" content="https:&#x2F;&#x2F;user-gold-cdn.xitu.io&#x2F;2019&#x2F;10&#x2F;31&#x2F;16e2255e79ec23ec?w=843&amp;h=551&amp;f=png&amp;s=19511">
-<meta property="og:image" content="https:&#x2F;&#x2F;user-gold-cdn.xitu.io&#x2F;2019&#x2F;10&#x2F;31&#x2F;16e2255ea0100216?w=1599&amp;h=689&amp;f=png&amp;s=306544">
-<meta property="og:updated_time" content="2019-11-20T15:17:06.781Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;user-gold-cdn.xitu.io&#x2F;2019&#x2F;10&#x2F;31&#x2F;16e2255e71b77cf1?w=634&amp;h=180&amp;f=png&amp;s=4829">
-  
-    <link rel="alternate" href="/atom.xml" title="刘康敬的博客" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/images/default-avatar.jpg">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/highlight.css">
+  <meta property="og:site_name" content="刘康敬的博客"/>
+  <link href="/apple-touch-icon-precomposed.png" sizes="180x180" rel="apple-touch-icon-precomposed">
+  <link rel="alternate" href="/atom.xml" title="刘康敬的博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/m.min.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
 </head>
 
 <body>
-  <div id="fullpage" class="mobile-nav-right">
-    
-      <div id="wrapper" title="图片来自网络">
-    
-    
-      <header id="header">
-  <div id="nav-toggle" class="nav-toggle"></div>
-  <div class="head-box global-width">
-    <nav class="nav-box nav-right">
-      
-        <a class="nav-item" href="/" title
-        
-        >首页</a>
-      
-        <a class="nav-item" href="/archives" title
-        
-        >归档</a>
-      
-    </nav>
-  </div>
-</header>
-      <div id="middlecontent" title class="global-width sidebar-right">
-        <section id="main"><article id="post-权限系统" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  <a id="top"></a>
+  <div id="main">
+    <div class="main-ctnr">
+      <div class="behind">
+  <a href="/" class="back black-color">
+    <svg class="i-close" viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+        <path d="M2 30 L30 2 M30 30 L2 2"></path>
+    </svg>
+  </a>
   
-    <header class="article-header">
+</div>
+
+
+  <article class="standard post">
+    <div class="title">
       
   
-    <h1 class="article-title" itemprop="name">
-      权限系统
+    <h1 class="page-title center">
+        权限系统
     </h1>
   
 
-    </header>
-  
-  <div class="article-meta">
-    <a href="/2018/10/22/%E6%9D%83%E9%99%90%E7%B3%BB%E7%BB%9F/" class="article-date">
-  <time datetime="2018-10-22T14:38:43.000Z" itemprop="datePublished">2018-10-22</time>
-</a>
-    
-    
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
 
-  </div>
-  
-    <span id="busuanzi_container_page_pv">
-      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
-    </span>
-  
+    </div>
+    <div class="meta center">
+      <time datetime="2018-10-22T14:38:43.000Z" itemprop="datePublished">
+  <svg class="i-calendar" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+    <path d="M2 6 L2 30 30 30 30 6 Z M2 15 L30 15 M7 3 L7 9 M13 3 L13 9 M19 3 L19 9 M25 3 L25 9"></path>
+  </svg>
+  &nbsp;
+  2018-10-22
+</time>
 
-  <div class="article-inner">
+
+
+
+
     
-    <div class="article-content article-content-cloud" itemprop="articleBody">
+    &nbsp;
+    <svg class="i-tag" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+      <circle cx="24" cy="8" r="2"></circle>
+      <path d="M2 18 L18 2 30 2 30 14 14 30 Z"></path>
+    </svg>
+    &nbsp;
+    <a href="/tags/数据库/">数据库</a>
+
+
+    </div>
+    <hr>
+    
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#权限模型"><span class="toc-text">权限模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#RBAC0模型，如下："><span class="toc-text">RBAC0模型，如下：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RBAC2模型"><span class="toc-text">RBAC2模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RBAC3模型"><span class="toc-text">RBAC3模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用户组"><span class="toc-text">用户组</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#组织架构"><span class="toc-text">组织架构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#职位"><span class="toc-text">职位</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#含有组织-职位-用户组的模型"><span class="toc-text">含有组织/职位/用户组的模型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#授权流程"><span class="toc-text">授权流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表结构"><span class="toc-text">表结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#权限框架"><span class="toc-text">权限框架</span></a></li></ol>
+    
+    <div class="picture-container">
       
-        <h3 id="权限模型"><a href="#权限模型" class="headerlink" title="权限模型"></a>权限模型</h3><p>迄今为止最为普及的权限设计模型是RBAC模型,基于角色的访问控制（Role-Based Access Control)</p>
+    </div>
+    <h3 id="权限模型"><a href="#权限模型" class="headerlink" title="权限模型"></a>权限模型</h3><p>迄今为止最为普及的权限设计模型是RBAC模型,基于角色的访问控制（Role-Based Access Control)</p>
 <h4 id="RBAC0模型，如下："><a href="#RBAC0模型，如下：" class="headerlink" title="RBAC0模型，如下："></a>RBAC0模型，如下：</h4><p><img src="https://user-gold-cdn.xitu.io/2019/10/31/16e2255e71b77cf1?w=634&h=180&f=png&s=4829" alt="RBAC0"></p>
 <p>这是权限最基础也是最核心的模型,它包括用户/角色/权限,其中用户和角色是多对多的关系,角色和权限也是多对多的关系。<br><strong>用户</strong>是发起操作的主体,按类型分可分为2B和2C用户,可以是后台管理系统的用户,可以是OA系统的内部员工,也可以是面向C端的用户,比如阿里云的用户。<br><strong>角色</strong>起到了桥梁的作用,连接了用户和权限的关系,每个角色可以关联多个权限,同时一个用户关联多个角色,那么这个用户就有了多个角色的多个权限。有人会问了为什么用户不直接关联权限呢?在用户基数小的系统,比如20个人的小系统,管理员可以直接把用户和权限关联,工作量并不大,选择一个用户勾选下需要的权限就完事了。但是在实际企业系统中,用户基数比较大,其中很多人的权限都是一样的,就是个普通访问权限,如果管理员给100人甚至更多授权,工作量巨大。这就引入了”角色(Role)”概念,一个角色可以与多个用户关联,管理员只需要把该角色赋予用户,那么用户就有了该角色下的所有权限,这样设计既提升了效率,也有很大的拓展性。</p>
 <p><strong>权限</strong>是用户可以访问的资源,包括页面权限,操作权限,数据权限:</p>
@@ -143,169 +131,98 @@
 <li>PyCasbin</li>
 </ul>
 
-      
+
+  </article>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <div class="busuanzi center">
+    page PV:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
+    site PV:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
+    site UV:&nbsp;<span id="busuanzi_value_site_uv"></span>
+  </div>
+
+
+    
+
+
+
+
+
     </div>
-    
-      <footer class="article-footer">
-        完
-      </footer>
-    
   </div>
-  
-    
-<nav id="article-nav">
-  <div class="article-nav-block">
-    
-  </div>
-  <div class="article-nav-block">
-    
-      <a href="/2017/11/20/celery%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
-        <div class="article-nav-title">celery定时任务的简单使用</div>
-        <strong class="article-nav-caption"></strong>
-      </a>
-    
-  </div>
-</nav>
-
-    <link rel="stylesheet" href="/css/gitment.css"> 
-<script src="/js/gitment.js"></script>
-
-<div id="gitmentContainer"></div>
-
-<script>
-var gitment = new Gitment({
-  owner: '',
-  repo: '',
-  oauth: {
-    client_id: '',
-    client_secret: '',
-  },
-})
-gitment.render('gitmentContainer')
-</script>
-
-  
-  
-</article>
-</section>
-        <aside id="sidebar">
-  
-    <div class="widget-box">
-  <div class="avatar-box">
-    <img class="avatar" src="/images/default-avatar.jpg" title="图片来自网络"></img>
-    <h3 class="avatar-name">
-      
-        不是静静的敬敬
-      
-    </h3>
-    <p class="avatar-slogan">
-      抗揍小青年，愣头青工程师
-    </p>
-  </div>
+  <footer class="page-footer"><div class="clearfix">
 </div>
-
-
-  
-    
-
-  
-    
-  <div class="widget-box">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/celery/" rel="tag">celery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+<div class="right-foot">
+    <div class="firstrow">
+        <a href="#top" target="_self">
+        <svg class="i-caret-right" viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+            <path d="M10 30 L26 16 10 2 Z"></path>
+        </svg>
+        </a>
+        © XXX 2016-2020
     </div>
-  </div>
-
-
-  
-    
-  <div class="widget-box">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/celery/" style="font-size: 10px;">celery</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a>
+    <div class="secondrow">
+        <a href="https://github.com/gaoryrt/hexo-theme-pln" target="_blank" rel="noopener">
+        Theme Pln
+        </a>
     </div>
-  </div>
-
-  
-    
-  <div class="widget-box">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li></ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-box">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2018/10/22/%E6%9D%83%E9%99%90%E7%B3%BB%E7%BB%9F/">权限系统</a>
-          </li>
-        
-          <li>
-            <a href="/2017/11/20/celery%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">celery定时任务的简单使用</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-      <div class="widget-box">
-    <h3 class="widget-title">友链</h3>
-    <div class="widget">
-      
-        <a style="display: block;" href="https://yiluyanxia.github.io/" title target='_blank'
-        >一路眼瞎</a>
-      
-    </div>
-  </div>
-
-  
-</aside>
-      </div>
-      <footer id="footer">
-  <div class="foot-box global-width">
-    &copy; 2019 John Doe &nbsp;&nbsp;
-    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity" target="_blank" rel="noopener">antiquity</a>
-    <br>
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span id="busuanzi_container_site_pv">不蒜子告之   阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
-  </div>
+</div>
+<div class="clearfix">
+</div>
 </footer>
-      <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
-<script>
-if (!window.jQuery) {
-var script = document.createElement('script');
-script.src = "/js/jquery-2.0.3.min.js";
-document.body.write(script);
-}
+  <script type="text/javascript">
+
+// disqus scripts
+
+
+// dropdown scripts
+function $(s) {
+    return document.querySelector(s)
+  }
+
+  function $$(s) {
+    return document.querySelectorAll(s)
+  }
+  var dropDownElArr = $$('.dropdown')
+  for (var i = 0; i < dropDownElArr.length; i += 1) {
+    dropDownElArr[i].addEventListener('click', function(event) {
+      var content = this.querySelector('.dropdown-content')
+      event.stopPropagation()
+      if (content.className.indexOf('open') < 0) {
+        content.classList.add('open')
+      } else {
+        content.classList.remove('open')
+      }
+    })
+  }
+  document.body.addEventListener('click', function() {
+    var dropDownContentElArr = $$('.dropdown-content')
+    for (var i = 0; i < dropDownContentElArr.length; i += 1) {
+      dropDownContentElArr[i].classList.remove('open')
+    }
+  })
+
+  // smooth scroll
+  $$('a[href^="#"]').forEach(e=>{
+    e.addEventListener("click", function(e) {
+      e.preventDefault();
+      var t = this.getAttribute("href").substr(1);
+      $(`[id='${decodeURIComponent(t)}']`).scrollIntoView({
+        behavior: "smooth"
+      }),
+      t === "top" ? history.replaceState(null, null, " ") : history.pushState(null, null, `#${t}`)
+    })
+  })
+
+// search
+var searchEl = document.querySelector("#local-search-input")
+if (searchEl) searchEl.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+    var s = e.target.value
+    window.open('//www.google.com/search?q=site:http://yoursite.com%20' + s, '_blank').focus()
+  }
+})
+
 </script>
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-
-    </div>
-    <nav id="mobile-nav" class="mobile-nav-box">
-  <div class="mobile-nav-img mobile-nav-top"></div>
-  
-    <a href="/" class="mobile-nav-link">首页</a>
-  
-    <a href="/archives" class="mobile-nav-link">归档</a>
-  
-  <div class="mobile-nav-img  mobile-nav-bottom"></div>
-</nav>    
-  </div>
 </body>
 </html>

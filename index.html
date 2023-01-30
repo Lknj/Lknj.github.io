@@ -1,362 +1,276 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
   <meta charset="utf-8">
-  
-
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="google-site-verification" content="" />
+  <meta name="referrer" content="unsafe-url">
   
   <title>刘康敬的博客</title>
+  <meta name="author" content="John Doe">
+  
+  
+  
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  
-  
-  <meta property="og:type" content="website">
-<meta property="og:title" content="刘康敬的博客">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">
-<meta property="og:site_name" content="刘康敬的博客">
-<meta property="og:locale" content="en">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="刘康敬的博客" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/images/default-avatar.jpg">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/highlight.css">
+  <meta property="og:site_name" content="刘康敬的博客"/>
+  <link href="/apple-touch-icon-precomposed.png" sizes="180x180" rel="apple-touch-icon-precomposed">
+  <link rel="alternate" href="/atom.xml" title="刘康敬的博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/m.min.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
 </head>
 
 <body>
-  <div id="fullpage" class="mobile-nav-right">
-    
-      <div id="wrapper" title="图片来自网络">
-    
-    
-      <header id="header">
-  <div id="nav-toggle" class="nav-toggle"></div>
-  <div class="head-box global-width">
-    <nav class="nav-box nav-right">
-      
-        <a class="nav-item" href="/" title
-        
-        >首页</a>
-      
-        <a class="nav-item" href="/archives" title
-        
-        >归档</a>
-      
-    </nav>
-  </div>
-</header>
-      <div id="middlecontent" title class="global-width sidebar-right">
-        <section id="main">
-  
-    <article id="post-权限系统" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/22/%E6%9D%83%E9%99%90%E7%B3%BB%E7%BB%9F/">权限系统</a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/2018/10/22/%E6%9D%83%E9%99%90%E7%B3%BB%E7%BB%9F/" class="article-date">
-  <time datetime="2018-10-22T14:38:43.000Z" itemprop="datePublished">2018-10-22</time>
-</a>
-    
-    
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
-
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-cloud" itemprop="articleBody">
-      
-        <h3 id="权限模型"><a href="#权限模型" class="headerlink" title="权限模型"></a>权限模型</h3><p>迄今为止最为普及的权限设计模型是RBAC模型,基于角色的访问控制（Role-Based Access Control)</p>
-<h4 id="RBAC0模型，如下："><a href="#RBAC0模型，如下：" class="headerlink" title="RBAC0模型，如下："></a>RBAC0模型，如下：</h4><p><img src="https://user-gold-cdn.xitu.io/2019/10/31/16e2255e71b77cf1?w=634&h=180&f=png&s=4829" alt="RBAC0"></p>
-<p>这是权限最基础也是最核心的模型,它包括用户/角色/权限,其中用户和角色是多对多的关系,角色和权限也是多对多的关系。<br><strong>用户</strong>是发起操作的主体,按类型分可分为2B和2C用户,可以是后台管理系统的用户,可以是OA系统的内部员工,也可以是面向C端的用户,比如阿里云的用户。<br><strong>角色</strong>起到了桥梁的作用,连接了用户和权限的关系,每个角色可以关联多个权限,同时一个用户关联多个角色,那么这个用户就有了多个角色的多个权限。有人会问了为什么用户不直接关联权限呢?在用户基数小的系统,比如20个人的小系统,管理员可以直接把用户和权限关联,工作量并不大,选择一个用户勾选下需要的权限就完事了。但是在实际企业系统中,用户基数比较大,其中很多人的权限都是一样的,就是个普通访问权限,如果管理员给100人甚至更多授权,工作量巨大。这就引入了”角色(Role)”概念,一个角色可以与多个用户关联,管理员只需要把该角色赋予用户,那么用户就有了该角色下的所有权限,这样设计既提升了效率,也有很大的拓展性。</p>
-<p><strong>权限</strong>是用户可以访问的资源,包括页面权限,操作权限,数据权限:</p>
-<ul>
-<li>页面权限: 即用户登录系统可以看到的页面,由菜单来控制,菜单包括一级菜单和二级菜单,只要用户有一级和二级菜单的权限,那么用户就可以访问页面</li>
-<li>操作权限: 即页面的功能按钮,包括查看,新增,修改,删除,审核等,用户点击删除按钮时,后台会校验用户角色下的所有权限是否包含该删除权限,如果是,就可以进行下一步操作,反之提示无权限。有的系统要求”可见即可操作”,意思是如果页面上能够看到操作按钮,那么用户就可以操作,要实现此需求,这里就需要前端来配合,前端开发把用户的权限信息缓存,在页面判断用户是否包含此权限,如果有,就显示该按钮,如果没有,就隐藏该按钮。某种程度上提升了用户体验,但是在实际场景可自行选择是否需要这样做</li>
-<li>数据权限: 数据权限就是用户在同一页面看到的数据是不同的,比如财务部只能看到其部门下的用户数据,采购部只看采购部的数据,在一些大型的公司,全国有很多城市和分公司,比如杭州用户登录系统只能看到杭州的数据,上海用户只能看到上海的数据,解决方案一般是把数据和具体的组织架构关联起来,举个例子,再给用户授权的时候,用户选择某个角色同时绑定组织如财务部或者合肥分公司,那么该用户就有了该角色下财务部或合肥分公司下的的数据权限。</li>
-</ul>
-<p>以上是RBAC的核心设计及模型分析,此模型也叫做RBAC0,而基于核心概念之上,RBAC还提供了扩展模式。包括RBAC1,RBAC2,RBAC3模型。</p>
-<h4 id="RBAC2模型"><a href="#RBAC2模型" class="headerlink" title="RBAC2模型"></a>RBAC2模型</h4><p><img src="https://user-gold-cdn.xitu.io/2019/10/31/16e2255e6c99e707?w=483&h=387&f=png&s=14307" alt="RBAC1"></p>
-<p>此模型引入了角色继承(Hierarchical Role)概念,即角色具有上下级的关系,角色间的继承关系可分为一般继承关系和受限继承关系。一般继承关系仅要求角色继承关系是一个绝对偏序关系，允许角色间的多继承。而受限继承关系则进一步要求角色继承关系是一个树结构，实现角色间的单继承。这种设计可以给角色分组和分层，一定程度简化了权限管理工作。</p>
-<h4 id="RBAC3模型"><a href="#RBAC3模型" class="headerlink" title="RBAC3模型"></a>RBAC3模型</h4><p>基于核心模型的基础上，进行了角色的约束控制,RBAC2模型中添加了责任分离关系,其规定了权限被赋予角色时，或角色被赋予用户时，以及当用户在某一时刻激活一个角色时所应遵循的强制性规则。责任分离包括静态责任分离和动态责任分离。主要包括以下约束:</p>
-<ul>
-<li>互斥角色: 同一用户只能分配到一组互斥角色集合中至多一个角色，支持责任分离的原则。互斥角色是指各自权限互相制约的两个角色。比如财务部有会计和审核员两个角色,他们是互斥角色,那么用户不能同时拥有这两个角色,体现了职责分离原则</li>
-<li>基数约束: 一个角色被分配的用户数量受限；一个用户可拥有的角色数目受限；同样一个角色对应的访问权限数目也应受限，以控制高级权限在系统中的分配</li>
-<li>先决条件角色: 即用户想获得某上级角色,必须先获得其下一级的角色</li>
-</ul>
-<h4 id="用户组"><a href="#用户组" class="headerlink" title="用户组"></a>用户组</h4><p>当平台用户基数增大，角色类型增多时，而且有一部分人具有相同的属性,比如财务部的所有员工,如果直接给用户分配角色，管理员的工作量就会很大,如果把相同属性的用户归类到某用户组,那么管理员直接给用户组分配角色,用户组里的每个用户即可拥有该角色,以后其他用户加入用户组后,即可自动获取用户组的所有角色,退出用户组,同时也撤销了用户组下的角色,无须管理员手动管理角色。<br>根据用户组是否有上下级关系,可以分为有上下级的用户组和普通用户组:</p>
-<ul>
-<li>具有上下级关系的用户组: 最典型的例子就是部门和职位,可能多数人没有把部门职位和用户组关联起来吧。当然用户组是可以拓展的,部门和职位常用于内部的管理系统,如果是面向C端的系统,比如淘宝网的商家,商家自身也有一套组织架构,比如采购部,销售部,客服部,后勤部等,有些人拥有客服权限,有些人拥有上架权限等等,所以用户组是可以拓展的</li>
-<li>普通用户组: 即没有上下级关系,和组织架构,职位都没有关系,也就是说可以跨部门,跨职位,举个例子,某电商后台管理系统,有拼团活动管理角色,我们可以设置一个拼团用户组,该组可以包括研发部的后台开发人员,运营部的运营人员,采购部的人员等等。</li>
-</ul>
-<p>每个公司都会涉及到到组织和职位</p>
-<h5 id="组织架构"><a href="#组织架构" class="headerlink" title="组织架构"></a>组织架构</h5><p>常见的组织架构如下图:</p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/10/31/16e2255e7788acef?w=783&h=456&f=png&s=13297" alt="组织架构"></p>
-<p>我们可以把组织与角色进行关联,用户加入组织后,就会自动获得该组织的全部角色,无须管理员手动授予,大大减少工作量,同时用户在调岗时,只需调整组织,角色即可批量调整。组织的另外一个作用是控制数据权限,把角色关联到组织,那么该角色只能看到该组织下的数据权限。</p>
-<h5 id="职位"><a href="#职位" class="headerlink" title="职位"></a>职位</h5><p>em：财务部的职位</p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/10/31/16e2255e736a2e46?w=347&h=397&f=png&s=7754" alt="财务部的职位"></p>
-<p>每个组织部门下都会有多个职位,比如财务部有总监,会计,出纳等职位,虽然都在同一部门,但是每个职位的权限是不同的,职位高的拥有更多的权限。总监拥有所有权限,会计和出纳拥有部分权限。特殊情况下,一个人可能身兼多职。</p>
-<h5 id="含有组织-职位-用户组的模型"><a href="#含有组织-职位-用户组的模型" class="headerlink" title="含有组织/职位/用户组的模型"></a>含有组织/职位/用户组的模型</h5><p>根据以上场景,新的权限模型就可以设计出来了,如下图:</p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/10/31/16e2255e79ec23ec?w=843&h=551&f=png&s=19511" alt="模型"></p>
-<p>根据系统的复杂度不同,其中的多对多关系和一对一关系可能会有变化</p>
-<ul>
-<li>在单系统且用户类型单一的情况下,用户和组织是一对一关系,组织和职位是一对多关系,用户和职位是一对一关系,组织和角色是一对一关系,职位和角色是一对一关系,用户和用户组是多对对关系,用户组和角色是一对一关系,当然这些关系也可以根据具体业务进行调整。模型设计并不是死的,如果小系统不需要用户组,这块是可以去掉的。</li>
-<li>分布式系统且用户类型单一的情况下,到这里权限系统就会变得很复杂,这里就要引入了一个”系统”概念,此时系统架构是个分布式系统,权限系统独立出来,负责所有的系统的权限控制,其他业务系统比如商品中心,订单中心,用户中心,每个系统都有自己的角色和权限,那么权限系统就可以配置其他系统的角色和权限。</li>
-<li>分布式系统且用户类型多个的情况下,比如淘宝网,它的用户类型包括内部用户,商家,普通用户,内部用户登录多个后台管理系统,商家登录商家中心,这些做权限控制,如果你作为架构师,该如何来设计呢?大神可以在评论区留言交流哦!</li>
-</ul>
-<h3 id="授权流程"><a href="#授权流程" class="headerlink" title="授权流程"></a>授权流程</h3><p>授权即给用户授予角色,按流程可分为手动授权和审批授权。权限中心可同时配置这两种,可提高授权的灵活性。</p>
-<ul>
-<li>手动授权: 管理员登录权限中心为用户授权,根据在哪个页面授权分为两种方式:给用户添加角色,给角色添加用户。给用户添加角色就是在用户管理页面,点击某个用户去授予角色,可以一次为用户添加多个角色;给角色添加用户就是在角色管理页面,点击某个角色,选择多个用户,实现了给批量用户授予角色的目的。</li>
-<li>审批授权: 即用户申请某个职位角色,那么用户通过OA流程申请该角色,然后由上级审批,该用户即可拥有该角色,不需要系统管理员手动授予。</li>
-</ul>
-<h3 id="表结构"><a href="#表结构" class="headerlink" title="表结构"></a>表结构</h3><p>下面是多系统下的表结构,简单设计下,主要提供思路:</p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/10/31/16e2255ea0100216?w=1599&h=689&f=png&s=306544" alt="表结构"></p>
-<h3 id="权限框架"><a href="#权限框架" class="headerlink" title="权限框架"></a>权限框架</h3><ul>
-<li>PyCasbin</li>
-</ul>
-
-      
+  <a id="top"></a>
+  <div id="main">
+    <div class="main-ctnr">
+      <nav class="navbar">
+  <div class="nav-container">
+  <div class="nav navbar-nav navbar-left">
+    <div class="navbar-header">
+      <a href="/" class="navbar-brand">XXX</a>
     </div>
     
-  </div>
-  
-  
-</article>
-
-  
-    <article id="post-celery定时任务的简单使用" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/20/celery%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">celery定时任务的简单使用</a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/2017/11/20/celery%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/" class="article-date">
-  <time datetime="2017-11-20T08:25:57.000Z" itemprop="datePublished">2017-11-20</time>
-</a>
-    
-    
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/celery/" rel="tag">celery</a></li></ul>
 
   </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-cloud" itemprop="articleBody">
-      
-        <h3 id="celery介绍"><a href="#celery介绍" class="headerlink" title="celery介绍"></a>celery介绍</h3><p>Celery 是一个强大的分布式任务队列，它可以让任务的执行完全脱离主程序，甚至可以被分配到其他主机上运行。我们通常使用它来实现异步任务（ async task ）和定时任务（ crontab ）。 异步任务比如是发送邮件、或者文件上传, 图像处理等等一些比较耗时的操作 ，定时任务是需要在特定时间执行的任务。它的架构组成如下图：<br><img src="https://raw.githubusercontent.com/Lknj/liukangjing.com/master/work.liukangjing.com/celery%E7%BB%93%E6%9E%84.png?token=AHB3VGFVQ7E5LULZFNN7ML252T47Y" alt="celery结构图"></p>
-<ul>
-<li>任务队列</li>
-</ul>
-<p>任务队列是一种跨线程、跨机器工作的一种机制.</p>
-<p>任务队列中包含称作任务的工作单元。有专门的工作进程持续不断的监视任务队列，并从中获得新的任务并处理.</p>
-<ul>
-<li>任务模块</li>
-</ul>
-<p>包含异步任务和定时任务。其中，异步任务通常在业务逻辑中被触发并发往任务队列，而定时任务由 Celery Beat 进程周期性地将任务发往任务队列</p>
-<ul>
-<li>消息中间件 Broker</li>
-</ul>
-<p>Broker ，即为任务调度队列，接收任务生产者发来的消息（即任务），将任务存入队列。 Celery 本身不提供队列服务，官方推荐使用 RabbitMQ 和 Redis 等。</p>
-<ul>
-<li>任务执行单元 Worker</li>
-</ul>
-<p>Worker 是执行任务的处理单元，它实时监控消息队列，获取队列中调度的任务，并执行它。</p>
-<ul>
-<li>任务结果存储 Backend</li>
-</ul>
-<p>Backend 用于存储任务的执行结果，以供查询。同消息中间件一样，存储也可使用 RabbitMQ, Redis 和 MongoDB 等。</p>
-<ul>
-<li>使用 Celery 实现异步任务的步骤：<ol>
-<li>创建一个 Celery 实例</li>
-<li>启动 Celery Worker ，通过delay() 或 apply_async()(delay 方法封装了 apply_async, apply_async支持更多的参数 ) 将任务发布到broker</li>
-<li>应用程序调用异步任务</li>
-<li>存储结果 （发布的任务需要return才会有结果，否则为空）</li>
-</ol>
-</li>
-</ul>
-<h3 id="celery定时任务的简单使用"><a href="#celery定时任务的简单使用" class="headerlink" title="celery定时任务的简单使用"></a>celery定时任务的简单使用</h3><p>以下是使用celery实现的一个定时任务的demo</p>
-<ol>
-<li>目录结构如下：</li>
-</ol>
-<div class="highlight-box"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">celery_task</span><br><span class="line">├── celeryconfig.py    <span class="comment"># celeryconfig配置文件</span></span><br><span class="line">├── celery.py   <span class="comment"># celery对象</span></span><br><span class="line">├── epp_scripts   <span class="comment"># 任务函数</span></span><br><span class="line">│   ├── __init__.py</span><br><span class="line">│   ├── test1.py</span><br><span class="line">│   └── test2.py</span><br><span class="line">└── __init__.py</span><br></pre></td></tr></table></figure></div>
-
-<ol start="2">
-<li>celery配置文件 celeryconfig.py</li>
-</ol>
-<div class="highlight-box"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> absolute_import <span class="comment"># 拒绝隐式引入，因为celery.py的名字和celery的包名冲突，需要使用这条语句让程序正确地运行</span></span><br><span class="line"><span class="keyword">from</span> celery.schedules <span class="keyword">import</span> crontab</span><br><span class="line"></span><br><span class="line">broker_url = <span class="string">"redis://127.0.0.1:6379/5"</span>  </span><br><span class="line">result_backend = <span class="string">"redis://127.0.0.1:6379/6"</span></span><br><span class="line"></span><br><span class="line">broker_url = <span class="string">"redis://127.0.0.1:6379/2"</span>   <span class="comment"># 使用redis存储任务队列</span></span><br><span class="line">result_backend = <span class="string">"redis://127.0.0.1:6379/6"</span>  <span class="comment"># 使用redis存储结果</span></span><br><span class="line"></span><br><span class="line">task_serializer = <span class="string">'json'</span></span><br><span class="line">result_serializer = <span class="string">'json'</span></span><br><span class="line">accept_content = [<span class="string">'json'</span>]</span><br><span class="line">timezone = <span class="string">"Asia/Shanghai"</span>  <span class="comment"># 时区设置</span></span><br><span class="line">worker_hijack_root_logger = <span class="literal">False</span>  <span class="comment"># celery默认开启自己的日志，可关闭自定义日志，不关闭自定义日志输出为空</span></span><br><span class="line">result_expires = <span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span>  <span class="comment"># 存储结果过期时间（默认1天）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 导入任务所在文件</span></span><br><span class="line">imports = [</span><br><span class="line">    <span class="string">"celery_task.epp_scripts.test1"</span>,  <span class="comment"># 导入py文件</span></span><br><span class="line">    <span class="string">"celery_task.epp_scripts.test2"</span>,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 需要执行任务的配置</span></span><br><span class="line">beat_schedule = &#123;</span><br><span class="line">    <span class="string">"test1"</span>: &#123;</span><br><span class="line">        <span class="string">"task"</span>: <span class="string">"celery_task.epp_scripts.test1.celery_run"</span>,  <span class="comment">#执行的函数</span></span><br><span class="line">        <span class="string">"schedule"</span>: crontab(minute=<span class="string">"*/1"</span>),   <span class="comment"># every minute 每分钟执行 </span></span><br><span class="line">        <span class="string">"args"</span>: ()  <span class="comment"># # 任务函数参数</span></span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="string">"test2"</span>: &#123;</span><br><span class="line">        <span class="string">"task"</span>: <span class="string">"celery_task.epp_scripts.test2.celery_run"</span>,</span><br><span class="line">        <span class="string">"schedule"</span>: crontab(minute=<span class="number">0</span>, hour=<span class="string">"*/1"</span>),   <span class="comment"># every minute 每小时执行</span></span><br><span class="line">        <span class="string">"args"</span>: ()</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<ol start="3">
-<li>celery 初始化文件</li>
-</ol>
-<div class="highlight-box"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> absolute_import <span class="comment"># 拒绝隐式引入，因为celery.py的名字和celery的包名冲突，需要使用这条语句让程序正确地运行</span></span><br><span class="line"><span class="keyword">from</span> celery <span class="keyword">import</span> Celery</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建celery应用对象</span></span><br><span class="line">app = Celery(<span class="string">"celery_demo"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 导入celery的配置信息</span></span><br><span class="line">app.config_from_object(<span class="string">"celery_task.celeryconfig"</span>)</span><br></pre></td></tr></table></figure></div>
-
-<ol start="4">
-<li>任务函数（epp_scripts目录下）<div class="highlight-box"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># test1.py</span></span><br><span class="line"><span class="keyword">from</span> celery_task.celery <span class="keyword">import</span> app</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test11</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"test11----------------"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test22</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"test22--------------"</span>)</span><br><span class="line">    test11()</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.task</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">celery_run</span><span class="params">()</span>:</span></span><br><span class="line">    test11()</span><br><span class="line">    test22()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    celery_run()</span><br></pre></td></tr></table></figure></div>
-
-</li>
-</ol>
-<div class="highlight-box"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># test2.py</span></span><br><span class="line"><span class="keyword">from</span> celery_task.celery <span class="keyword">import</span> app</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test33</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"test33----------------"</span>)</span><br><span class="line">    <span class="comment"># print("------"*50)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test44</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"test44--------------"</span>)</span><br><span class="line">    <span class="comment"># print("------" * 50)</span></span><br><span class="line">    test33()</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.task</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">celery_run</span><span class="params">()</span>:</span></span><br><span class="line">    test33()</span><br><span class="line">    test44()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    celery_run()</span><br></pre></td></tr></table></figure></div>
-
-<ol start="5">
-<li>celery相关命令</li>
-</ol>
-<div class="highlight-box"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在celery_task同级目录下执行</span></span><br><span class="line">celery -A celery_task beat  <span class="comment"># 发布任务</span></span><br><span class="line">celery -A celery_task worker --loglevel=info  <span class="comment"># 执行任务</span></span><br><span class="line">celery -A celery_task worker --loglevel=info --beat  <span class="comment"># 合并成一条</span></span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-box"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 后台启动 celery worker进程 </span></span><br><span class="line">celery multi start work_1 -A appcelery  </span><br><span class="line"><span class="comment"># work_1 为woker的名称，可以用来进行对该进程进行管理</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 多进程相关</span></span><br><span class="line">celery multi stop WOERNAME      <span class="comment"># 停止worker进程,有的时候这样无法停止进程，就需要加上-A 项目名，才可以删掉</span></span><br><span class="line">celery multi restart WORKNAME        <span class="comment"># 重启worker进程</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看进程数</span></span><br><span class="line">celery status -A celery_task       <span class="comment"># 查看该项目运行的进程数   celery_task同级目录下</span></span><br><span class="line"></span><br><span class="line">执行完毕后会在当前目录下产生一个二进制文件，celerybeat-schedule 。</span><br><span class="line">该文件用于存放上次执行结果：</span><br><span class="line">　　1、如果存在celerybeat-schedule文件，那么读取后根据上一次执行的时间，继续执行。</span><br><span class="line">　　2、如果不存在celerybeat-schedule文件，那么会立即执行一次。</span><br><span class="line">　　3、如果存在celerybeat-schedule文件，读取后，发现间隔时间已过，那么会立即执行。</span><br></pre></td></tr></table></figure></div>
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
-
-
-
-</section>
-        <aside id="sidebar">
-  
-    <div class="widget-box">
-  <div class="avatar-box">
-    <img class="avatar" src="/images/default-avatar.jpg" title="图片来自网络"></img>
-    <h3 class="avatar-name">
-      
-        不是静静的敬敬
-      
-    </h3>
-    <p class="avatar-slogan">
-      抗揍小青年，愣头青工程师
-    </p>
-  </div>
+  <div id="site_search" class="">
+  <input type="text" id="local-search-input" placeholder="search"/>
 </div>
 
 
-  
-    
 
-  
-    
-  <div class="widget-box">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/celery/" rel="tag">celery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-box">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/celery/" style="font-size: 10px;">celery</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-box">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li></ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-box">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
+  <div class="nav navbar-nav navbar-right">
+    <div class="dropdown">
+      <a href="javascript:void(0);" target="_blank" rel="noopener" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        <svg class="i-link" viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="M18 8 C18 8 24 2 27 5 30 8 29 12 24 16 19 20 16 21 14 17 M14 24 C14 24 8 30 5 27 2 24 3 20 8 16 13 12 16 11 18 15"></path>
+        </svg>
+      </a>
+      <base href="/">
+      <ul class="dropdown-content">
         
-          <li>
-            <a href="/2018/10/22/%E6%9D%83%E9%99%90%E7%B3%BB%E7%BB%9F/">权限系统</a>
-          </li>
-        
-          <li>
-            <a href="/2017/11/20/celery%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">celery定时任务的简单使用</a>
-          </li>
-        
-      </ul>
+          <div>
+            <a href="/links.html">
+        links
+      </a>
     </div>
+     
+          <div>
+            <a href="https://github.com/XXX/" target="_blank" rel="noopener">
+        Github
+      </a>
+    </div>
+     
+          <div>
+            <a href="/rss2.xml">
+        rss
+      </a>
+    </div>
+     
+    </ul>
+    </div>
+    <div class="archives"><a href="/archives">
+      <svg class="i-archive" viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+        <path d="M4 10 L4 28 28 28 28 10 M2 4 L2 10 30 10 30 4 Z M12 15 L20 15"></path>
+      </svg>
+    </a></div>
   </div>
+  </div>
+</nav>
+
+<ul class="posts">
+  
+    
+<li class="post-item">
+  
+  
+    <h1 class="index-title">
+        <a href="/2018/10/22/权限系统/">
+            权限系统
+        </a>
+    </h1>
+  
+
+
+  <div class="excerpt">
+  
+    权限模型迄今为止最为普及的权限设计模型是RBAC模型,基于角色的访问控制（Role-Based Access Control)
+RBAC0模型，如下：
+这是权限最基础也是最核心的模型,它包括用户/角色/权限,其中用户和角色是多对多的关系,角
+  
+  <a href="/2018/10/22/权限系统/">
+    more
+  </a>
+  </div>
+  <div class="index-meta">
+    <time datetime="2018-10-22T14:38:43.000Z" itemprop="datePublished">
+  <svg class="i-calendar" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+    <path d="M2 6 L2 30 30 30 30 6 Z M2 15 L30 15 M7 3 L7 9 M13 3 L13 9 M19 3 L19 9 M25 3 L25 9"></path>
+  </svg>
+  &nbsp;
+  2018-10-22
+</time>
+
+
+
+
+
+    
+    &nbsp;
+    <svg class="i-tag" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+      <circle cx="24" cy="8" r="2"></circle>
+      <path d="M2 18 L18 2 30 2 30 14 14 30 Z"></path>
+    </svg>
+    &nbsp;
+    <a href="/tags/数据库/">数据库</a>
+
+
+  </div>
+</li>
+<hr>
+
+
+
+
 
   
-      <div class="widget-box">
-    <h3 class="widget-title">友链</h3>
-    <div class="widget">
-      
-        <a style="display: block;" href="https://yiluyanxia.github.io/" title target='_blank'
-        >一路眼瞎</a>
-      
-    </div>
+    
+<li class="post-item">
+  
+  
+    <h1 class="index-title">
+        <a href="/2017/11/20/celery定时任务的简单使用/">
+            celery定时任务的简单使用
+        </a>
+    </h1>
+  
+
+
+  <div class="excerpt">
+  
+    celery介绍Celery 是一个强大的分布式任务队列，它可以让任务的执行完全脱离主程序，甚至可以被分配到其他主机上运行。我们通常使用它来实现异步任务（ async task ）和定时任务（ crontab ）。 异步任务比如是发送邮件、
+  
+  <a href="/2017/11/20/celery定时任务的简单使用/">
+    more
+  </a>
   </div>
+  <div class="index-meta">
+    <time datetime="2017-11-20T08:25:57.000Z" itemprop="datePublished">
+  <svg class="i-calendar" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+    <path d="M2 6 L2 30 30 30 30 6 Z M2 15 L30 15 M7 3 L7 9 M13 3 L13 9 M19 3 L19 9 M25 3 L25 9"></path>
+  </svg>
+  &nbsp;
+  2017-11-20
+</time>
+
+
+
+
+
+    
+    &nbsp;
+    <svg class="i-tag" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+      <circle cx="24" cy="8" r="2"></circle>
+      <path d="M2 18 L18 2 30 2 30 14 14 30 Z"></path>
+    </svg>
+    &nbsp;
+    <a href="/tags/celery/">celery</a>
+
+
+  </div>
+</li>
+<hr>
+
+
+
+
 
   
-</aside>
-      </div>
-      <footer id="footer">
-  <div class="foot-box global-width">
-    &copy; 2019 John Doe &nbsp;&nbsp;
-    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity" target="_blank" rel="noopener">antiquity</a>
-    <br>
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span id="busuanzi_container_site_pv">不蒜子告之   阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+</ul>
+<ul class="pager">
+    <span class="page-number current">1</span>
+</ul>
+
+
+    </div>
   </div>
+  <footer class="page-footer"><div class="clearfix">
+</div>
+<div class="right-foot">
+    <div class="firstrow">
+        <a href="#top" target="_self">
+        <svg class="i-caret-right" viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+            <path d="M10 30 L26 16 10 2 Z"></path>
+        </svg>
+        </a>
+        © XXX 2016-2020
+    </div>
+    <div class="secondrow">
+        <a href="https://github.com/gaoryrt/hexo-theme-pln" target="_blank" rel="noopener">
+        Theme Pln
+        </a>
+    </div>
+</div>
+<div class="clearfix">
+</div>
 </footer>
-      <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
-<script>
-if (!window.jQuery) {
-var script = document.createElement('script');
-script.src = "/js/jquery-2.0.3.min.js";
-document.body.write(script);
-}
+  <script type="text/javascript">
+
+// disqus scripts
+
+
+// dropdown scripts
+function $(s) {
+    return document.querySelector(s)
+  }
+
+  function $$(s) {
+    return document.querySelectorAll(s)
+  }
+  var dropDownElArr = $$('.dropdown')
+  for (var i = 0; i < dropDownElArr.length; i += 1) {
+    dropDownElArr[i].addEventListener('click', function(event) {
+      var content = this.querySelector('.dropdown-content')
+      event.stopPropagation()
+      if (content.className.indexOf('open') < 0) {
+        content.classList.add('open')
+      } else {
+        content.classList.remove('open')
+      }
+    })
+  }
+  document.body.addEventListener('click', function() {
+    var dropDownContentElArr = $$('.dropdown-content')
+    for (var i = 0; i < dropDownContentElArr.length; i += 1) {
+      dropDownContentElArr[i].classList.remove('open')
+    }
+  })
+
+  // smooth scroll
+  $$('a[href^="#"]').forEach(e=>{
+    e.addEventListener("click", function(e) {
+      e.preventDefault();
+      var t = this.getAttribute("href").substr(1);
+      $(`[id='${decodeURIComponent(t)}']`).scrollIntoView({
+        behavior: "smooth"
+      }),
+      t === "top" ? history.replaceState(null, null, " ") : history.pushState(null, null, `#${t}`)
+    })
+  })
+
+// search
+var searchEl = document.querySelector("#local-search-input")
+if (searchEl) searchEl.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+    var s = e.target.value
+    window.open('//www.google.com/search?q=site:http://yoursite.com%20' + s, '_blank').focus()
+  }
+})
+
 </script>
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-
-    </div>
-    <nav id="mobile-nav" class="mobile-nav-box">
-  <div class="mobile-nav-img mobile-nav-top"></div>
-  
-    <a href="/" class="mobile-nav-link">首页</a>
-  
-    <a href="/archives" class="mobile-nav-link">归档</a>
-  
-  <div class="mobile-nav-img  mobile-nav-bottom"></div>
-</nav>    
-  </div>
 </body>
 </html>
