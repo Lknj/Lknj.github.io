@@ -1,0 +1,201 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="google-site-verification" content="" />
+  <meta name="referrer" content="unsafe-url">
+  
+  <title>定位bug是前端还是后端</title>
+  <meta name="author" content="John Doe">
+  <meta name="description" content="什么是接口测试？
+所谓接口测试就是通过测试不同情况下的入参与之相应的出参信息来判断接口是否符合或满足相应的功能性、安全性要求。
+
+软件对外提供的一个功能，（一个门，一个口）写入所需要的参数，调用软件里的方法，检验返回的结果是否是我们期望的。
+
+
+为什么要做接口测试？
+可以发现页面上发现不了的bug
+">
+  
+  
+  <meta property="og:title" content="定位bug是前端还是后端"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:site_name" content="刘康敬的博客"/>
+  <link href="/apple-touch-icon-precomposed.png" sizes="180x180" rel="apple-touch-icon-precomposed">
+  <link rel="alternate" href="/atom.xml" title="刘康敬的博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/m.min.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+</head>
+
+<body>
+  <a id="top"></a>
+  <div id="main">
+    <div class="main-ctnr">
+      <div class="behind">
+  <a href="/" class="back black-color">
+    <svg class="i-close" viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+        <path d="M2 30 L30 2 M30 30 L2 2"></path>
+    </svg>
+  </a>
+  
+</div>
+
+
+  <article class="standard post">
+    <div class="title">
+      
+  
+    <h1 class="page-title center">
+        定位bug是前端还是后端
+    </h1>
+  
+
+
+    </div>
+    <div class="meta center">
+      <time datetime="2023-01-31T12:43:09.000Z" itemprop="datePublished">
+  <svg class="i-calendar" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+    <path d="M2 6 L2 30 30 30 30 6 Z M2 15 L30 15 M7 3 L7 9 M13 3 L13 9 M19 3 L19 9 M25 3 L25 9"></path>
+  </svg>
+  &nbsp;
+  2023-01-31
+</time>
+
+
+
+
+
+
+    </div>
+    <hr>
+    
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是接口测试？"><span class="toc-text">什么是接口测试？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么要做接口测试？"><span class="toc-text">为什么要做接口测试？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#怎么区分bug是前台还是后台的bug？"><span class="toc-text">怎么区分bug是前台还是后台的bug？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GET请求和POST请求的区别？"><span class="toc-text">GET请求和POST请求的区别？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP和HTTPS的区别"><span class="toc-text">HTTP和HTTPS的区别</span></a></li></ol>
+    
+    <div class="picture-container">
+      
+    </div>
+    <h4 id="什么是接口测试？"><a href="#什么是接口测试？" class="headerlink" title="什么是接口测试？"></a>什么是接口测试？</h4><ol>
+<li><p>所谓接口测试就是通过测试不同情况下的入参与之相应的出参信息来判断接口是否符合或满足相应的功能性、安全性要求。</p>
+</li>
+<li><p>软件对外提供的一个功能，（一个门，一个口）写入所需要的参数，调用软件里的方法，检验返回的结果是否是我们期望的。</p>
+</li>
+</ol>
+<h4 id="为什么要做接口测试？"><a href="#为什么要做接口测试？" class="headerlink" title="为什么要做接口测试？"></a>为什么要做接口测试？</h4><ol>
+<li>可以发现页面上发现不了的bug</li>
+<li>检测系统异常处理的能力（发送错误的数据看会有什么影响）</li>
+<li>检查系统的安全性、稳定性（模块与模块之间传输数据是否安全、传输是否稳定）</li>
+<li>前端和后端都校验好了（代码在哪都能使用）</li>
+</ol>
+<h4 id="怎么区分bug是前台还是后台的bug？"><a href="#怎么区分bug是前台还是后台的bug？" class="headerlink" title="怎么区分bug是前台还是后台的bug？"></a>怎么区分bug是前台还是后台的bug？</h4><p>注：区分bug之前首先得了解清楚业务逻辑，然后通过不同场景的模拟来确定bug是出现在哪一步</p>
+<p><strong>前后端bug举例</strong>：<br>问题1：切换不同网页或者功能时，前者数据会在后者数据显示，是前端问题还是后端问题？</p>
+<ul>
+<li>前端问题，前者数据请求发起后未返回就请求后者了，导致前者的返回显示在后者里了。</li>
+</ul>
+<p>问题2：多用户使用同功能列表时数据返回结果混乱，是前端问题，还是后端问题？</p>
+<ul>
+<li>可能是后端也可能是前端，先确定每个用户请求返回结果是否正常、是否与各自接口对应，如果不对应，那就说明是后端问题(比如该表使用了同一个库的同一个表，导致其他用户请求的时候下一个用户已经在清库数据了)</li>
+</ul>
+<h4 id="GET请求和POST请求的区别？"><a href="#GET请求和POST请求的区别？" class="headerlink" title="GET请求和POST请求的区别？"></a>GET请求和POST请求的区别？</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1、GET是明文提交，key和value是跟在接口地址后面的，数据会显示出来，不安全；POST提交数据在表单里面，是隐藏起来的，相对GET来说，更加安全一点（但是也可以通过抓包工具获取信息）</span><br><span class="line">2、GET提交数据时，内容有字数限制；POST在表单里面提交数据，没有字数限制</span><br><span class="line">3、GET是获取数据，POST是发送数据</span><br></pre></td></tr></table></figure>
+<p>5、常见的状态码？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">以2开头：</span><br><span class="line"></span><br><span class="line">200 – 请求成功，服务器也返回了响应信息</span><br><span class="line"></span><br><span class="line">以3开头：请求重定向了，请求的位置转移了</span><br><span class="line"></span><br><span class="line">301 – 永久性定向，请求的资源被分配了新的URL地址，而且以后请求的时候都是用新的URL地址</span><br><span class="line"></span><br><span class="line">302 – 临时性定向，请求的资源被分配了新的URL地址，这次访问是这个新的URL地址，下次访问可能就是另外的URL地址</span><br><span class="line"></span><br><span class="line">303 –</span><br><span class="line">临时性定向，请求的资源被分配了新的URL地址，请求的时候使用GET方法定向获取资源（与302的区别就是303要求客户端使用GET请求方式）</span><br><span class="line"></span><br><span class="line">以4开头：</span><br><span class="line"></span><br><span class="line">401 – 表示访问的页面没有授权</span><br><span class="line"></span><br><span class="line">403 – 表示没有权限访问这个页面</span><br><span class="line"></span><br><span class="line">404 – 表示没有这个页面，服务器上无法找到请求的资源（也可以是服务器拒绝请求但是不想给拒绝原因）</span><br><span class="line"></span><br><span class="line">以5开头：</span><br><span class="line"></span><br><span class="line">500 – 表示服务器内部异常</span><br><span class="line"></span><br><span class="line">503 – 表示服务器正处于超负载或者正在进行停机维护，无法处理请求</span><br><span class="line"></span><br><span class="line">504 – 表示服务器请求超时，没有返回结果</span><br></pre></td></tr></table></figure>
+<h4 id="HTTP和HTTPS的区别"><a href="#HTTP和HTTPS的区别" class="headerlink" title="HTTP和HTTPS的区别"></a>HTTP和HTTPS的区别</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1、https需要ca申请证书，并且大多数证书都是收费的</span><br><span class="line"></span><br><span class="line">2、http以明文的形式传输信息，https则是具有安全性的ssl加密传输协议</span><br><span class="line"></span><br><span class="line">3、http使用80或者8080端口，https使用的是443端口</span><br><span class="line"></span><br><span class="line">4、http的连接简单，无状态，这次请求结束了，下次请求重新开通道；https是一直开通的；https比http安全（原因：https是在http的基础上加上ssl层，构建出来的可以进行加密传输，身份认证的网络协议）</span><br></pre></td></tr></table></figure>
+
+  </article>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <div class="busuanzi center">
+    page PV:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
+    site PV:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
+    site UV:&nbsp;<span id="busuanzi_value_site_uv"></span>
+  </div>
+
+
+    
+
+
+
+
+
+    </div>
+  </div>
+  <footer class="page-footer"><div class="clearfix">
+</div>
+<div class="right-foot">
+    <div class="firstrow">
+        <a href="#top" target="_self">
+        <svg class="i-caret-right" viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+            <path d="M10 30 L26 16 10 2 Z"></path>
+        </svg>
+        </a>
+        © XXX 2016-2020
+    </div>
+    <div class="secondrow">
+        <a href="https://github.com/gaoryrt/hexo-theme-pln" target="_blank" rel="noopener">
+        Theme Pln
+        </a>
+    </div>
+</div>
+<div class="clearfix">
+</div>
+</footer>
+  <script type="text/javascript">
+
+// disqus scripts
+
+
+// dropdown scripts
+function $(s) {
+    return document.querySelector(s)
+  }
+
+  function $$(s) {
+    return document.querySelectorAll(s)
+  }
+  var dropDownElArr = $$('.dropdown')
+  for (var i = 0; i < dropDownElArr.length; i += 1) {
+    dropDownElArr[i].addEventListener('click', function(event) {
+      var content = this.querySelector('.dropdown-content')
+      event.stopPropagation()
+      if (content.className.indexOf('open') < 0) {
+        content.classList.add('open')
+      } else {
+        content.classList.remove('open')
+      }
+    })
+  }
+  document.body.addEventListener('click', function() {
+    var dropDownContentElArr = $$('.dropdown-content')
+    for (var i = 0; i < dropDownContentElArr.length; i += 1) {
+      dropDownContentElArr[i].classList.remove('open')
+    }
+  })
+
+  // smooth scroll
+  $$('a[href^="#"]').forEach(e=>{
+    e.addEventListener("click", function(e) {
+      e.preventDefault();
+      var t = this.getAttribute("href").substr(1);
+      $(`[id='${decodeURIComponent(t)}']`).scrollIntoView({
+        behavior: "smooth"
+      }),
+      t === "top" ? history.replaceState(null, null, " ") : history.pushState(null, null, `#${t}`)
+    })
+  })
+
+// search
+var searchEl = document.querySelector("#local-search-input")
+if (searchEl) searchEl.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+    var s = e.target.value
+    window.open('//www.google.com/search?q=site:http://yoursite.com%20' + s, '_blank').focus()
+  }
+})
+
+</script>
+
+</body>
+</html>

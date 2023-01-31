@@ -1,0 +1,220 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="google-site-verification" content="" />
+  <meta name="referrer" content="unsafe-url">
+  
+  <title>UI测试小技巧</title>
+  <meta name="author" content="John Doe">
+  <meta name="description" content="关于UI测试UI走查顺序
+有空白页的页面优先测试（走查）空白页
+按页面跳转流程把主线任务走一遍。
+测试（走查）主线任务之外的页面。
+对于复用以前组件的控件，主要看和以前是否一致，是否缺少交互状态。对于新的组件，要仔细核对，必要时可跟开发一起核对代码
+
+走查内容
+是否还原设计稿
+
+常见的包括：字体字号">
+  
+  
+  <meta property="og:title" content="UI测试小技巧"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:site_name" content="刘康敬的博客"/>
+  <link href="/apple-touch-icon-precomposed.png" sizes="180x180" rel="apple-touch-icon-precomposed">
+  <link rel="alternate" href="/atom.xml" title="刘康敬的博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/m.min.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+</head>
+
+<body>
+  <a id="top"></a>
+  <div id="main">
+    <div class="main-ctnr">
+      <div class="behind">
+  <a href="/" class="back black-color">
+    <svg class="i-close" viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+        <path d="M2 30 L30 2 M30 30 L2 2"></path>
+    </svg>
+  </a>
+  
+</div>
+
+
+  <article class="standard post">
+    <div class="title">
+      
+  
+    <h1 class="page-title center">
+        UI测试小技巧
+    </h1>
+  
+
+
+    </div>
+    <div class="meta center">
+      <time datetime="2023-01-31T13:20:55.000Z" itemprop="datePublished">
+  <svg class="i-calendar" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+    <path d="M2 6 L2 30 30 30 30 6 Z M2 15 L30 15 M7 3 L7 9 M13 3 L13 9 M19 3 L19 9 M25 3 L25 9"></path>
+  </svg>
+  &nbsp;
+  2023-01-31
+</time>
+
+
+
+
+
+
+    </div>
+    <hr>
+    
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#关于UI测试"><span class="toc-text">关于UI测试</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#UI走查顺序"><span class="toc-text">UI走查顺序</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#走查内容"><span class="toc-text">走查内容</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#UI检测"><span class="toc-text">UI检测</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#UI检测不到内层元素方法记录"><span class="toc-text">UI检测不到内层元素方法记录</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#需鼠标悬浮才可选到元素的问题测试方法处理"><span class="toc-text">需鼠标悬浮才可选到元素的问题测试方法处理</span></a></li></ol></li></ol>
+    
+    <div class="picture-container">
+      
+    </div>
+    <h4 id="关于UI测试"><a href="#关于UI测试" class="headerlink" title="关于UI测试"></a>关于UI测试</h4><h5 id="UI走查顺序"><a href="#UI走查顺序" class="headerlink" title="UI走查顺序"></a>UI走查顺序</h5><ol>
+<li>有空白页的页面优先测试（走查）空白页</li>
+<li>按页面跳转流程把主线任务走一遍。</li>
+<li>测试（走查）主线任务之外的页面。</li>
+<li>对于复用以前组件的控件，主要看和以前是否一致，是否缺少交互状态。对于新的组件，要仔细核对，必要时可跟开发一起核对代码</li>
+</ol>
+<h5 id="走查内容"><a href="#走查内容" class="headerlink" title="走查内容"></a>走查内容</h5><ol>
+<li><p>是否还原设计稿</p>
+<ul>
+<li>常见的包括：字体字号、颜色、是否加粗、icon大小、分割线颜色粗细、对齐、间距等。</li>
+</ul>
+</li>
+<li><p>设计细节实现</p>
+<ul>
+<li>超出显示：卡片内标题、下拉框选中结果、输入区域超出时是否完整显示（首先要明确显示规则：根据需求不同，有2种规则，超出后…和换行完整显示。）</li>
+<li>组件细节：搜索框、较长卡号输入是否有清除按钮</li>
+<li>交互流畅：新页面从右侧拉入还是下方进入。</li>
+<li>点击区域：保证用户可以点击。</li>
+</ul>
+</li>
+</ol>
+<p><strong>注意</strong>：<br>第一种：为了更好体验，点击区域大。可点击区域需要包含文字部分或者是整行。<br>第二种：点击区域不足，需增大。主要是小尺寸的icon。设计师在设计和切图时需注意，最小区域最好不要小于48*48px。</p>
+<ol start="3">
+<li><p>是否适配</p>
+<ul>
+<li>普通适配：因开发时布局产生的适配问题。多栏按钮适配、非通栏banner适配等。</li>
+<li>小屏适配：主要针对iOS。在iPhone6及以上机型可完整显示，iPhone5/SE等小屏显示不完整，需要进行适配处理。</li>
+</ul>
+</li>
+<li><p>核对文案</p>
+<ul>
+<li><p>易错的有：页面标题、空白页、按钮及toast等。</p>
+</li>
+<li><p>文案的问题，如果团队有专门的测试人员，测试会看的。但关键的地方设计师走查的时候也要看一下。toast发现和需要文档不符，或者需求文档未标明，工程师返回的文案不是十分符合时，可反馈给产品经理。</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>注：关于错别字测试：<br>大家可以借助这款错别字校验网站：秘塔写作猫<br>关于空白页：<br>这里指的是优先走查空白页面，再创建测试数据。因为创建数据后页面不再是空白状态。这样测试更高效。</p>
+<h4 id="UI检测"><a href="#UI检测" class="headerlink" title="UI检测"></a>UI检测</h4><h5 id="UI检测不到内层元素方法记录"><a href="#UI检测不到内层元素方法记录" class="headerlink" title="UI检测不到内层元素方法记录"></a>UI检测不到内层元素方法记录</h5><p>检查UI点选不到内层元素时，先点选该元素，然后在右侧 element.style{} 内加上display:none 然后就可以选上了</p>
+<h5 id="需鼠标悬浮才可选到元素的问题测试方法处理"><a href="#需鼠标悬浮才可选到元素的问题测试方法处理" class="headerlink" title="需鼠标悬浮才可选到元素的问题测试方法处理"></a>需鼠标悬浮才可选到元素的问题测试方法处理</h5><p>这种需要鼠标悬浮才能显示的部分，点选不到元素的，可以打开控制台，输入debugger暂停页面动作，然后就可以选中了  </p>
+<p> 用完之后点击向右三角或者按F8可以结束这个调试状态</p>
+
+
+  </article>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <div class="busuanzi center">
+    page PV:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
+    site PV:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
+    site UV:&nbsp;<span id="busuanzi_value_site_uv"></span>
+  </div>
+
+
+    
+
+
+
+
+
+    </div>
+  </div>
+  <footer class="page-footer"><div class="clearfix">
+</div>
+<div class="right-foot">
+    <div class="firstrow">
+        <a href="#top" target="_self">
+        <svg class="i-caret-right" viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+            <path d="M10 30 L26 16 10 2 Z"></path>
+        </svg>
+        </a>
+        © XXX 2016-2020
+    </div>
+    <div class="secondrow">
+        <a href="https://github.com/gaoryrt/hexo-theme-pln" target="_blank" rel="noopener">
+        Theme Pln
+        </a>
+    </div>
+</div>
+<div class="clearfix">
+</div>
+</footer>
+  <script type="text/javascript">
+
+// disqus scripts
+
+
+// dropdown scripts
+function $(s) {
+    return document.querySelector(s)
+  }
+
+  function $$(s) {
+    return document.querySelectorAll(s)
+  }
+  var dropDownElArr = $$('.dropdown')
+  for (var i = 0; i < dropDownElArr.length; i += 1) {
+    dropDownElArr[i].addEventListener('click', function(event) {
+      var content = this.querySelector('.dropdown-content')
+      event.stopPropagation()
+      if (content.className.indexOf('open') < 0) {
+        content.classList.add('open')
+      } else {
+        content.classList.remove('open')
+      }
+    })
+  }
+  document.body.addEventListener('click', function() {
+    var dropDownContentElArr = $$('.dropdown-content')
+    for (var i = 0; i < dropDownContentElArr.length; i += 1) {
+      dropDownContentElArr[i].classList.remove('open')
+    }
+  })
+
+  // smooth scroll
+  $$('a[href^="#"]').forEach(e=>{
+    e.addEventListener("click", function(e) {
+      e.preventDefault();
+      var t = this.getAttribute("href").substr(1);
+      $(`[id='${decodeURIComponent(t)}']`).scrollIntoView({
+        behavior: "smooth"
+      }),
+      t === "top" ? history.replaceState(null, null, " ") : history.pushState(null, null, `#${t}`)
+    })
+  })
+
+// search
+var searchEl = document.querySelector("#local-search-input")
+if (searchEl) searchEl.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+    var s = e.target.value
+    window.open('//www.google.com/search?q=site:http://yoursite.com%20' + s, '_blank').focus()
+  }
+})
+
+</script>
+
+</body>
+</html>
