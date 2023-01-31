@@ -1,0 +1,334 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="google-site-verification" content="" />
+  <meta name="referrer" content="unsafe-url">
+  
+  <title>测试用例编写</title>
+  <meta name="author" content="John Doe">
+  <meta name="description" content="测试用例的编写从以下几个方面考虑会更全面：
+考虑历史数据
+考虑版本兼容问题 和 手机兼容
+考虑 数据同时、多次、大量写入问题
+考虑服务依赖问题
+考虑 数据安全问题
+模块被复用，测试被复用模块的原有功能使用情况
+产品的可用性
+产品的移植性
+排序问题，相同数据根据什么排序
+数据句状态问题，例如： 认证 ">
+  
+  
+  <meta property="og:title" content="测试用例编写"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:site_name" content="刘康敬的博客"/>
+  <link href="/apple-touch-icon-precomposed.png" sizes="180x180" rel="apple-touch-icon-precomposed">
+  <link rel="alternate" href="/atom.xml" title="刘康敬的博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/m.min.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+</head>
+
+<body>
+  <a id="top"></a>
+  <div id="main">
+    <div class="main-ctnr">
+      <div class="behind">
+  <a href="/" class="back black-color">
+    <svg class="i-close" viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+        <path d="M2 30 L30 2 M30 30 L2 2"></path>
+    </svg>
+  </a>
+  
+</div>
+
+
+  <article class="standard post">
+    <div class="title">
+      
+  
+    <h1 class="page-title center">
+        测试用例编写
+    </h1>
+  
+
+
+    </div>
+    <div class="meta center">
+      <time datetime="2023-01-31T09:23:18.000Z" itemprop="datePublished">
+  <svg class="i-calendar" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+    <path d="M2 6 L2 30 30 30 30 6 Z M2 15 L30 15 M7 3 L7 9 M13 3 L13 9 M19 3 L19 9 M25 3 L25 9"></path>
+  </svg>
+  &nbsp;
+  2023-01-31
+</time>
+
+
+
+
+
+    
+    &nbsp;
+    <svg class="i-tag" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+      <circle cx="24" cy="8" r="2"></circle>
+      <path d="M2 18 L18 2 30 2 30 14 14 30 Z"></path>
+    </svg>
+    &nbsp;
+    <a href="/tags/测试用例/">测试用例</a>
+
+
+    </div>
+    <hr>
+    
+      <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#测试用例的编写从以下几个方面考虑会更全面："><span class="toc-text">测试用例的编写从以下几个方面考虑会更全面：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#实际案例"><span class="toc-text">实际案例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#登陆功能用例"><span class="toc-text">登陆功能用例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#微信拜年红包测试用例"><span class="toc-text">微信拜年红包测试用例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#UI-界面测试"><span class="toc-text">UI 界面测试</span></a></li></ol>
+    
+    <div class="picture-container">
+      
+    </div>
+    <h5 id="测试用例的编写从以下几个方面考虑会更全面："><a href="#测试用例的编写从以下几个方面考虑会更全面：" class="headerlink" title="测试用例的编写从以下几个方面考虑会更全面："></a>测试用例的编写从以下几个方面考虑会更全面：</h5><ol>
+<li>考虑历史数据</li>
+<li>考虑版本兼容问题 和 手机兼容</li>
+<li>考虑 数据同时、多次、大量写入问题</li>
+<li>考虑服务依赖问题</li>
+<li>考虑 数据安全问题</li>
+<li>模块被复用，测试被复用模块的原有功能使用情况</li>
+<li>产品的可用性</li>
+<li>产品的移植性</li>
+<li>排序问题，相同数据根据什么排序</li>
+<li>数据句状态问题，例如： 认证 已认证 认证中</li>
+</ol>
+<h5 id="实际案例"><a href="#实际案例" class="headerlink" title="实际案例"></a>实际案例</h5><h5 id="登陆功能用例"><a href="#登陆功能用例" class="headerlink" title="登陆功能用例"></a>登陆功能用例</h5><p><strong>功能测试点</strong></p>
+<ol>
+<li><p>输入已注册的用户名和正确的密码，验证是否登录成功；</p>
+</li>
+<li><p>输入已注册的用户名和不正确的密码，验证是否登录失败，并且提示信息正确；</p>
+</li>
+<li><p>输入未注册的用户名和任意密码，验证是否登录失败，并且提示信息正确；</p>
+</li>
+<li><p>用户名和密码两者都为空，验证是否登录失败，并且提示信息正确；</p>
+</li>
+<li><p>用户名和密码两者之一为空，验证是否登录失败，并且提示信息正确；</p>
+</li>
+<li><p>如果登录功能启用了验证码功能，在用户名和密码正确的前提下，输入正确的验证码，验证是否登录成功；</p>
+</li>
+<li><p>如果登录功能启用了验证码功能，在用户名和密码正确的前提下，输入错误的验证码，验证是否登录失败，并且提示信息正确</p>
+</li>
+<li><p>输入正确的用户名和密码登录成功</p>
+</li>
+<li><p>输入错误的用户名密码登录失败</p>
+</li>
+<li><p>用户名正确，密码错误，是否提示输入密码错误？</p>
+</li>
+<li><p>用户名错误，密码正常，是否提示输入用户名错误？</p>
+</li>
+<li><p>用户名和密码都错误，是否有相应提示？</p>
+</li>
+<li><p>用户名密码为空时，是否有相应提示？</p>
+</li>
+<li><p>如果用户未注册，提示请先注册，然后进行登录</p>
+</li>
+<li><p>已经注销的用户登录失败，提示信息友好？</p>
+</li>
+<li><p>密码框是否加密显示？</p>
+</li>
+<li><p>用户名是否支持中文、特殊字符？</p>
+</li>
+<li><p>用户名是否有长度限制？</p>
+</li>
+<li><p>密码是否支持中文，特殊字符？</p>
+</li>
+<li><p>密码是否有长度限制？</p>
+</li>
+<li><p>密码是否区分大小写？</p>
+</li>
+<li><p>密码为一些简单常用字符串时，是否提示修改？如：123456</p>
+</li>
+<li><p>密码存储方式？是否加密？</p>
+</li>
+<li><p>登录功能是否需要输入验证码？<br>·验证码有效时间？<br>·验证码输入错误，登录失败，提示信息是否友好？<br>·输入过期的验证能否登录成功？<br>·验证码是否容易识别？<br>·验证码换一张功能是否可用？点击验证码图片是否可以更换验证码？</p>
+</li>
+<li><p>用户体系：比如系统分普通用户、高级用户，不同用户登录系统后可的权限不同。</p>
+</li>
+<li><p>如果使用第三方账号 (QQ,微博账号) 登录，那么第三方账号与本系统的账号体系对应关系如何保存？首次登录需要极权等。<br>安全测试</p>
+</li>
+<li><p>不登录：浏览器中直接输入登录后的地址，看是否可以直接进入</p>
+</li>
+<li><p>登录成功后生成的 Cookie，是否是 httponly(否则容易被脚本盗取)</p>
+</li>
+<li><p>用户名和密码是否通过加密的方式，发送给 Web 服务器</p>
+</li>
+<li><p>用户名和密码的验证，应该是用服务器端验证，而不能单单是在客户端用 javascript 验证</p>
+</li>
+<li><p>用户名和密码的输入框，应该屏蔽 SQL 注入攻击</p>
+</li>
+<li><p>用户名和密码的的输入框，应该禁止输入脚本（防止 XSS 攻击）</p>
+</li>
+<li><p>错误登陆的次数限制（防止暴力破解）</p>
+</li>
+<li><p>考虑是否支持多用户在同一机器上登录</p>
+</li>
+<li><p>考虑一用户在多台机器上登录<br>性能测试</p>
+</li>
+<li><p>单用户登录系统的响应时间是否符合”3-5-8”原则</p>
+</li>
+<li><p>用户数在临界点时并发登录是否还能符合”3-5-8”原则</p>
+</li>
+<li><p>压力：大量并发用户登录，系统的响应时间是多少？系统会出现宕机、内存泄露、cpu 饱和、无法登录吗?</p>
+</li>
+<li><p>稳定性：系统能否处理并发用户数在临界点以内连续登录 N 个时的场景？<br>页面展示测试</p>
+</li>
+<li><p>登录页面显示是否正常？文字和图片能否正常显示，相应的提示信息是否正确，按钮的设置和排列是否正常，页面是否简洁壮观等。</p>
+</li>
+<li><p>页面默认焦点是否定位在用户名的输入框中</p>
+</li>
+<li><p>首次登录时相应的输入框是否为空？或者如果有默认文案，当点击输入框时默认方案是否消失？</p>
+</li>
+<li><p>相应的按钮如登录、重置等，是否可用;页面的前进、后退、刷新按钮是否可用？</p>
+</li>
+<li><p>快捷键 Tab,Esc,Enter 等，能否控制使用？</p>
+</li>
+<li><p>兼容性测试：不同浏览器，不同操作系统，不同分辨率下界面是否正常。<br>兼容性测试<br>1.不同浏览器下，验证登录页面的显示以及功能正确性；<br>2.相同浏览器的不同版本下，验证登录页面的显示以及功能正确性；<br>3.不同移动设备终端的不同浏览器下，验证登录页面的显示以及功能正确性；<br>4.不同分辨率的界面下，验证登录页面的显示以及功能正确性。<br>弱网测试<br>1.针对不同的场景使用不同的测试方法，web 可以使用浏览器自带的，app 可以使用 代理等；</p>
+</li>
+</ol>
+<h5 id="微信拜年红包测试用例"><a href="#微信拜年红包测试用例" class="headerlink" title="微信拜年红包测试用例"></a>微信拜年红包测试用例</h5><p><strong>功能测试</strong></p>
+<ol>
+<li>红包最多可以输入的金额；</li>
+<li>红包一次性可以发送的最大个数</li>
+<li>在输入红包的钱数和个数时只能输入数字</li>
+<li>当余额不足时，红包发送失败</li>
+<li>发送的红包自己是否可以领取</li>
+<li>发送的红包别人是否可以领取</li>
+<li>红包超过 24 小时是否可以领取</li>
+<li>红包超时未领取，是否退回原账户</li>
+<li>是否可以自己选择支付方式</li>
+<li>红包描述可以输入的最大字符</li>
+<li>余额不足时，是否可以切换支付方式</li>
+</ol>
+<h5 id="UI-界面测试"><a href="#UI-界面测试" class="headerlink" title="UI 界面测试"></a>UI 界面测试</h5><ol>
+<li>输入界面是否清晰可见</li>
+<li>红包界面颜色搭配是否美观</li>
+<li>输入金额界面是否有错别字</li>
+</ol>
+<p><strong>性能测试</strong></p>
+<ol>
+<li>发红包成功后的跳转时间</li>
+<li>红包超时未领取后的退款时间</li>
+<li>网速较差时，发红包的时间</li>
+</ol>
+<p><strong>安全测试</strong></p>
+<ol>
+<li>红包发送成功后，微信是否会收到通知</li>
+<li>包发送失败，余额不会产生变化</li>
+</ol>
+<p><strong>弱网测试</strong></p>
+<ol>
+<li>弱网下是否可以发送红包</li>
+<li>弱网下发送红包的时间</li>
+</ol>
+<p><strong>易用性测试</strong></p>
+<ol>
+<li>是否可以选择默认支付方式</li>
+<li>余额不足时，是否可以切换支付方式</li>
+<li>是否支持密码支付和指纹支付</li>
+</ol>
+
+
+  </article>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <div class="busuanzi center">
+    page PV:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
+    site PV:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
+    site UV:&nbsp;<span id="busuanzi_value_site_uv"></span>
+  </div>
+
+
+    
+
+
+
+
+
+    </div>
+  </div>
+  <footer class="page-footer"><div class="clearfix">
+</div>
+<div class="right-foot">
+    <div class="firstrow">
+        <a href="#top" target="_self">
+        <svg class="i-caret-right" viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+            <path d="M10 30 L26 16 10 2 Z"></path>
+        </svg>
+        </a>
+        © XXX 2016-2020
+    </div>
+    <div class="secondrow">
+        <a href="https://github.com/gaoryrt/hexo-theme-pln" target="_blank" rel="noopener">
+        Theme Pln
+        </a>
+    </div>
+</div>
+<div class="clearfix">
+</div>
+</footer>
+  <script type="text/javascript">
+
+// disqus scripts
+
+
+// dropdown scripts
+function $(s) {
+    return document.querySelector(s)
+  }
+
+  function $$(s) {
+    return document.querySelectorAll(s)
+  }
+  var dropDownElArr = $$('.dropdown')
+  for (var i = 0; i < dropDownElArr.length; i += 1) {
+    dropDownElArr[i].addEventListener('click', function(event) {
+      var content = this.querySelector('.dropdown-content')
+      event.stopPropagation()
+      if (content.className.indexOf('open') < 0) {
+        content.classList.add('open')
+      } else {
+        content.classList.remove('open')
+      }
+    })
+  }
+  document.body.addEventListener('click', function() {
+    var dropDownContentElArr = $$('.dropdown-content')
+    for (var i = 0; i < dropDownContentElArr.length; i += 1) {
+      dropDownContentElArr[i].classList.remove('open')
+    }
+  })
+
+  // smooth scroll
+  $$('a[href^="#"]').forEach(e=>{
+    e.addEventListener("click", function(e) {
+      e.preventDefault();
+      var t = this.getAttribute("href").substr(1);
+      $(`[id='${decodeURIComponent(t)}']`).scrollIntoView({
+        behavior: "smooth"
+      }),
+      t === "top" ? history.replaceState(null, null, " ") : history.pushState(null, null, `#${t}`)
+    })
+  })
+
+// search
+var searchEl = document.querySelector("#local-search-input")
+if (searchEl) searchEl.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+    var s = e.target.value
+    window.open('//www.google.com/search?q=site:http://yoursite.com%20' + s, '_blank').focus()
+  }
+})
+
+</script>
+
+</body>
+</html>
